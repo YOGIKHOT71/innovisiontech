@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InnovisionTech - Future-Ready Skills</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+
+<style>
+/* Base Styles & Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+/* Attractive Color Palette - Retained and enhanced */
+:root {
+    --primary-blue: #0056b3; 
+    --secondary-teal: #457b9d;
+    --accent-green: #28a745; 
+    --light-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-dark: #333;
+    --text-medium: #555;
+    --shadow-light: 0 5px 20px rgba(0,0,0,0.08);
+    --shadow-hover: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Top Gradient and Header */
+.top-gradient-bg {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #007bff 100%); 
+    padding-bottom: 250px; 
+    position: relative;
+    overflow: hidden;
+    /* Added a modern curve to the bottom edge */
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+.header-left { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+/* Logo Image Styling */
+.logo-container img {
+    height: 60px; 
+    width: auto;
+    /* Removed extra space around the logo image */
+    padding: 0; 
+}
+
+.header-left .tagline {
+    font-size: 14px;
+    color: var(--accent-green);
+    font-weight: 700;
+    border-left: 3px solid var(--accent-green);
+    padding-left: 10px;
+}
+.header-right { display: flex; align-items: center; }
+.header-right nav a { 
+    color: var(--text-medium); margin-left: 20px; font-weight: 600; transition: color 0.3s; 
+    text-decoration: none;
+}
+.header-right nav a:hover { color: var(--primary-blue); }
+.header-right .btn-highlight { 
+    background-color: var(--accent-green); 
+    color: white; padding: 10px 20px; border-radius: 25px; 
+    text-decoration: none; margin-left: 30px; font-weight: 700; transition: all 0.3s; 
+}
+.header-right .btn-highlight:hover { background-color: #1e7e34; transform: scale(1.05); }
+
+/* Hero Section */
+.hero-section { 
+    max-width: 1200px; margin: 0 auto; padding: 80px 50px 0; display: flex; align-items: center; justify-content: space-between; 
+}
+.hero-content { z-index: 1; }
+.hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.8vw; /* Adjusted size */
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+.hero-content p {
+    color: #e0f0ff;
+    font-size: 1.3vw; /* Adjusted size */
+    margin-bottom: 30px;
+}
+/* Large CTA button in Hero */
+.hero-cta {
+    background-color: var(--accent-green);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    display: inline-block;
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.4);
+    transition: all 0.3s;
+}
+.hero-cta:hover { background-color: #1e7e34; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(40, 167, 69, 0.6); }
+
+/* Sections & Headings */
+.section { max-width: 1200px; margin: 0 auto; padding: 60px 50px; }
+.section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 50px;
+}
+.section h2 span { color: var(--accent-green); }
+
+/* About Section (Kept the same structure) */
+.about-checklist { background-color: var(--card-bg); padding: 40px; border-radius: 15px; box-shadow: var(--shadow-light); }
+.about-checklist ul { list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; justify-content: space-between; }
+.about-checklist ul li { font-size: 18px; color: var(--text-dark); margin-bottom: 12px; padding-left: 35px; width: 48%; position: relative; font-weight: 600; }
+.about-checklist ul li::before { content: '\f058'; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: var(--accent-green); position: absolute; left: 0; top: 0; font-size: 22px; }
+
+
+/* Course Cards Grid - Enhanced visual appeal */
+.courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.course-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 3px solid transparent; 
+}
+.course-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.25); border-color: var(--accent-green); }
+.course-card-top { position: relative; height: 160px; overflow: hidden; }
+.course-card-top img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.course-card:hover .course-card-top img { transform: scale(1.1); }
+
+.course-card-body { padding: 20px 20px 10px; }
+.course-card-body h3 { font-size: 24px; color: var(--primary-blue); margin-bottom: 5px; font-weight: 800; }
+.course-card-body p.prospects {
+    font-size: 14px;
+    color: var(--accent-green);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.course-card-body p.prospects i { margin-right: 5px; }
+
+.course-card-footer {
+    padding: 0 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.course-card-footer .btn-details {
+    background: var(--primary-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.3s;
+    cursor: pointer;
+    border: none;
+}
+.course-card-footer .btn-details:hover { background: #004085; }
+
+
+/* Testimonials Section */
+.testimonial-card {
+    border-top: 5px solid var(--accent-green);
+    transition: transform 0.3s;
+}
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* Admission Form and Map Section - Enhanced Styling */
+.form-map-section {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+.admission-form-container {
+    flex: 1;
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-light);
+}
+.map-container {
+    flex: 1;
+    padding: 40px; /* Added padding to match the form */
+    border-radius: 15px;
+    background-color: var(--light-bg);
+    box-shadow: var(--shadow-light);
+}
+
+.admission-form-container h2 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+.map-container h2 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 32px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.admission-form-container input[type="text"],
+.admission-form-container input[type="email"],
+.admission-form-container select,
+.admission-form-container textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+.admission-form-container input:focus,
+.admission-form-container select:focus,
+.admission-form-container textarea:focus {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    outline: none;
+}
+.btn-submit {
+    width: 100%;
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 15px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+.btn-submit:hover {
+    background-color: #004085;
+    transform: translateY(-1px);
+}
+
+.map-container iframe {
+    width: 100%;
+    border: 0;
+    height: 450px; /* Taller map for better visibility */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    header { padding: 15px 20px; }
+    .header-right nav { display: none; }
+    .hero-section { flex-direction: column; text-align: center; }
+    .hero-content { margin-top: 0; padding-bottom: 30px; }
+    .hero-content h1 { font-size: 6vw; }
+    .hero-content p { font-size: 3vw; }
+    .hero-image-container { display: none; } /* Hide image on mobile for space */
+    .form-map-section {
+        flex-direction: column;
+    }
+    .about-checklist ul li { width: 100%; }
+    .admission-form-container, .map-container { padding: 30px; }
+}
+
+@media (max-width: 768px) {
+    .section { padding: 40px 20px; }
+    .section h2 { font-size: 30px; margin-bottom: 30px; }
+    .hero-cta { font-size: 18px; padding: 12px 25px; }
+}
+</style>
+
+<script>
+    // Course data structure (unchanged and reliable)
+    const courseData = {
+        'Website Design': {
+            fees: '₹15000', duration: '3 Months', hours: '90 Hours',
+            objective_en: "Learn to build modern, responsive, and interactive websites from scratch.",
+            objective_mr: "सुरवातीपासून आधुनिक, रिस्पॉन्सिव्ह आणि इंटरएक्टिव्ह वेबसाइट्स तयार करण्यास शिका.",
+            learning_en: ['HTML5 & CSS3 Mastery', 'JavaScript Fundamentals', 'Bootstrap/Frameworks', 'Deployment & Hosting'],
+            learning_mr: ['HTML5 आणि CSS3 मध्ये प्रभुत्व', 'जावास्क्रिप्ट मूलभूत गोष्टी', 'बूटस्ट्रॅप/फ्रेमवर्क्स', 'डिप्लॉयमेंट आणि होस्टिंग'],
+            prospects_en: 'Web Developer, UI Designer',
+            prospects_mr: 'वेब डेव्हलपर, UI डिझायनर'
+        },
+        'Software Development': {
+            fees: '₹25000', duration: '4 Months', hours: '120 Hours',
+            objective_en: "Develop strong programming logic and build real-world software applications.",
+            objective_mr: "मजबूत प्रोग्रामिंग लॉजिक विकसित करा आणि वास्तविक-जगातील सॉफ्टवेअर ॲप्लिकेशन्स तयार करा.",
+            learning_en: ['C/C++ & DSA', 'Object-Oriented Programming (Java/Python)', 'Database Management (SQL)', 'Software Testing Basics'],
+            learning_mr: ['C/C++ आणि DSA', 'ऑब्जेक्ट-ओरिएंटेड प्रोग्रामिंग (Java/Python)', 'डेटाबेस व्यवस्थापन (SQL)', 'सॉफ्टवेअर चाचणी मूलभूत गोष्टी'],
+            prospects_en: 'Programmer, Jr. Software Engineer',
+            prospects_mr: 'प्रोग्रामर, ज्युनियर सॉफ्टवेअर अभियंता'
+        },
+        'Tally + GST': {
+            fees: '₹12000', duration: '2 Months', hours: '80 Hours',
+            objective_en: "Gain expertise in financial accounting, inventory management, and GST compliance using Tally.",
+            objective_mr: "टॅलीचा वापर करून आर्थिक लेखांकन, इन्व्हेंटरी व्यवस्थापन आणि GST अनुपालनात कौशल्य मिळवा.",
+            learning_en: ['Voucher Entries & Ledgers', 'GST Computation & Filing', 'Inventory Control', 'Financial Statement Generation'],
+            learning_mr: ['व्हाउचर नोंदी आणि लेजर', 'GST गणना आणि फाइलिंग', 'इन्व्हेंटरी नियंत्रण', 'आर्थिक विवरण तयार करणे'],
+            prospects_en: 'Accountant, Tax Assistant',
+            prospects_mr: 'लेखापाल, कर सहाय्यक'
+        },
+        'Creative Designer / Graphic Design': {
+            fees: '₹18000', duration: '3 Months', hours: '100 Hours',
+            objective_en: "Master graphic design tools to create stunning visuals for digital and print media.",
+            objective_mr: "डिजिटल आणि प्रिंट मीडियासाठी आकर्षक दृश्ये तयार करण्यासाठी ग्राफिक डिझाइन साधनांमध्ये प्रभुत्व मिळवा.",
+            learning_en: ['Photoshop & Image Editing', 'CorelDRAW for Vector Graphics', 'UI/UX Principles', 'Branding & Logo Design'],
+            learning_mr: ['फोटोशॉप आणि इमेज एडिटिंग', 'वेक्टर ग्राफिक्ससाठी CorelDRAW', 'UI/UX तत्त्वे', 'ब्रँडिंग आणि लोगो डिझाइन'],
+            prospects_en: 'Graphic Designer, Social Media Visual Creator',
+            prospects_mr: 'ग्राफिक डिझायनर, सोशल मीडिया व्हिज्युअल क्रिएटर'
+        },
+        '2D Animation': {
+            fees: '₹16000', duration: '3 Months', hours: '90 Hours',
+            objective_en: "Learn the fundamentals of 2D character animation, motion graphics, and storytelling.",
+            objective_mr: "2D कॅरेक्टर ॲनिमेशन, मोशन ग्राफिक्स आणि कथाकथनाची मूलभूत तत्त्वे शिका.",
+            learning_en: ['Principles of Animation', 'Character Design & Rigging', 'Adobe Animate/Toon Boom Harmony', 'Visual Storytelling'],
+            learning_mr: ['ॲनिमेशनची तत्त्वे', 'कॅरेक्टर डिझाइन आणि रिगिंग', 'Adobe Animate/Toon Boom Harmony', 'व्हिज्युअल स्टोरीटेलिंग'],
+            prospects_en: '2D Animator, Motion Graphic Artist',
+            prospects_mr: '2D ॲनिमेटर, मोशन ग्राफिक आर्टिस्ट'
+        },
+        'CCC': {
+            fees: '₹4000', duration: '1 Month', hours: '40 Hours',
+            objective_en: "Covers essential computer concepts for basic digital literacy and government jobs.",
+            objective_mr: "मूलभूत डिजिटल साक्षरता आणि सरकारी नोकऱ्यांसाठी आवश्यक संगणक संकल्पनांचा समावेश.",
+            learning_en: ['Operating System Basics', 'MS Office Suite (Word, Excel, PPT)', 'Internet & Email Security', 'Digital Financial Services'],
+            learning_mr: ['ऑपरेटिंग सिस्टम मूलभूत गोष्टी', 'MS ऑफिस सूट (वर्ड, एक्सेल, पीपीटी)', 'इंटरनेट आणि ईमेल सुरक्षा', 'डिजिटल वित्तीय सेवा'],
+            prospects_en: 'Govt. Office Assistant, Data Entry Operator',
+            prospects_mr: 'सरकारी कार्यालय सहाय्यक, डेटा एंट्री ऑपरेटर'
+        },
+        'Coding Languages Bootcamp': {
+            fees: '₹30000', duration: '5 Months', hours: '150 Hours',
+            objective_en: "An intensive program to quickly master multiple in-demand programming languages and frameworks.",
+            objective_mr: "मागणी असलेल्या अनेक प्रोग्रामिंग भाषा आणि फ्रेमवर्कवर त्वरित प्रभुत्व मिळवण्यासाठी एक सखोल कार्यक्रम.",
+            learning_en: ['Full Stack Web Development', 'Data Structures & Algorithms', 'Cloud Computing Basics', 'Version Control (Git)'],
+            learning_mr: ['फुल स्टॅक वेब डेव्हलपमेंट', 'डेटा स्ट्रक्चर्स आणि अल्गोरिदम', 'क्लाउड कंप्युटिंग मूलभूत गोष्टी', 'व्हर्जन कंट्रोल (Git)'],
+            prospects_en: 'Full Stack Developer, Senior Programmer',
+            prospects_mr: 'फुल स्टॅक डेव्हलपर, वरिष्ठ प्रोग्रामर'
+        }
+    };
+
+    let currentLang = 'en';
+
+    function openModal(courseName) {
+        const data = courseData[courseName];
+        if (!data) return;
+
+        // Set course name and details
+        document.getElementById('modalCourseName').innerText = courseName;
+        document.getElementById('modalFees').innerText = data.fees;
+        document.getElementById('modalDuration').innerText = data.duration;
+        document.getElementById('modalHours').innerText = data.hours;
+
+        // Set Objective
+        document.getElementById('modalObjective').innerText = data[`objective_${currentLang}`];
+
+        // Set Key Learning Points
+        const learningList = document.getElementById('modalLearningList');
+        learningList.innerHTML = '';
+        const learningPoints = data[`learning_${currentLang}`];
+        learningPoints.forEach(point => {
+            const li = document.createElement('li');
+            li.innerText = point;
+            learningList.appendChild(li);
+        });
+
+        // Set language-specific headers
+        document.getElementById('modalObjectiveHeader').innerText = currentLang === 'en' ? 'Course Objective' : 'कोर्सचा उद्देश';
+        document.getElementById('modalLearningHeader').innerText = currentLang === 'en' ? 'What You Will Learn' : 'तुम्ही काय शिकाल';
+        
+        document.getElementById('courseModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('courseModal').style.display = 'none';
+    }
+
+    // Function to set language 
+    function setLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll("[data-en]").forEach(el => {
+            const dataAttribute = el.getAttribute(`data-${lang}`);
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = dataAttribute;
+            } else if (el.tagName === 'OPTION') {
+                el.innerHTML = dataAttribute;
+            } else {
+                el.innerHTML = dataAttribute;
+            }
+        });
+        
+        // Update Job Prospects on the fly
+        document.querySelectorAll('.course-card').forEach(card => {
+            // Find the course name reliably using the data attribute
+            const courseTitleElement = card.querySelector('h3');
+            const courseName = courseTitleElement.getAttribute('data-en');
+
+            const prospectElement = card.querySelector('p.prospects');
+            if (prospectElement) {
+                const data = courseData[courseName];
+                if (data) {
+                    // Update prospect text with the correct icon and language
+                    prospectElement.innerHTML = `<i class="fas fa-briefcase"></i> ${data[`prospects_${lang}`]}`;
+                }
+            }
+        });
+
+
+        // Re-localize modal headers if modal is open
+        if (document.getElementById('courseModal').style.display === 'flex') {
+            const currentCourseName = document.getElementById('modalCourseName').innerText;
+            // The course name in the modal is already set in English, so we use that key
+            openModal(currentCourseName);
+        }
+    }
+
+    // Set English as default language on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        setLang('en');
+        
+        // Manually adjust language buttons since they were not defined in CSS properly
+        document.querySelectorAll('.btn-lang').forEach(btn => {
+            btn.style.backgroundColor = 'var(--primary-blue)';
+            btn.style.color = 'white';
+            btn.style.border = 'none';
+            btn.style.padding = '8px 12px';
+            btn.style.borderRadius = '5px';
+            btn.style.cursor = 'pointer';
+            btn.style.marginLeft = '10px';
+        });
+    });
+</script>
+
+</head>
+<body>
+
+<div class="top-gradient-bg" id="home">
+    <header>
+        <div class="header-left">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="InnovisionTech Computers Logo">
+            </div>
+            <span class="tagline" data-en="The Best Placement Results" data-mr="सर्वोत्तम प्लेसमेंट परिणाम">The Best Placement Results</span>
+        </div>
+        <div class="header-right">
+            <nav>
+                <a href="#about" data-en="About Us" data-mr="आमच्याबद्दल">About Us</a>
+                <a href="#courses" data-en="Courses" data-mr="कोर्सेस">Courses</a>
+                <a href="#testimonials" data-en="Reviews" data-mr="पुनरावलोकने">Reviews</a>
+                <a href="#contact" data-en="Contact" data-mr="संपर्क">Contact</a>
+            </nav>
+            <a href="#admission" class="btn-highlight" data-en="Enroll Now" data-mr="आत्ताच प्रवेश घ्या">Enroll Now</a>
+            <button class="btn-lang" onclick="setLang('en')">EN</button>
+            <button class="btn-lang" onclick="setLang('mr')">मराठी</button>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 data-en="Start Your High-Paying Tech Career Today" data-mr="तुमचे उच्च-पगारी तंत्रज्ञान करिअर आजच सुरू करा">Start Your High-Paying Tech Career Today</h1>
+            <p data-en="Industry-aligned training with 100% placement focus. Transform your future with us." data-mr="१००% प्लेसमेंट फोकससह उद्योग-संरेखित प्रशिक्षण. आमच्यासोबत तुमचे भविष्य बदला.">Industry-aligned training with 100% placement focus. Transform your future with us.</p>
+            <a href="#admission" class="hero-cta" data-en="Enroll Now & Get 10% Off!" data-mr="आत्ताच प्रवेश घ्या आणि 10% सूट मिळवा!">Enroll Now & Get 10% Off!</a>
+        </div>
+        <div class="hero-image-container">
+            <img src="https://i.ibb.co/L5hY6zN/innovision-hero.png" alt="Students learning tech">
+        </div>
+    </section>
+</div>
+
+<section class="section about-section" id="about">
+    <h2 data-en="Why Choose <span>InnovisionTech</span>?" data-mr="<span>इनोव्हिजनटेक</span> का निवडावे?">Why Choose <span>InnovisionTech</span>?</h2>
+    <div class="about-checklist">
+        <p class="about-intro-text" data-en="At InnovisionTech, we believe in practical, industry-aligned education. Our expert instructors and cutting-edge curriculum prepare you for real-world challenges and exciting career opportunities in the fast-evolving tech landscape. Join us to transform your potential into a successful professional journey."
+            data-mr="इनोव्हिजनटेक मध्ये, आम्ही व्यावहारिक आणि उद्योगाशी संबंधित शिक्षणावर विश्वास ठेवतो. आमचे अनुभवी प्रशिक्षक आणि अत्याधुनिक अभ्यासक्रम तुम्हाला वेगाने बदलणाऱ्या तंत्रज्ञान क्षेत्रात वास्तविक जगातील आव्हानांसाठी आणि रोमांचक करिअरच्या संधींसाठी तयार करतात. तुमच्या क्षमतेला यशस्वी व्यावसायिक प्रवासात बदलण्यासाठी आमच्यात सामील व्हा.">
+        </p>
+        <ul>
+            <li data-en="Industry-Relevant Curriculum (Beginner to Advanced)" data-mr="उद्योग-संबंधित अभ्यासक्रम (नवशिक्या ते प्रगत)">Industry-Relevant Curriculum (Beginner to Advanced)</li>
+            <li data-en="Certified & Experienced Instructors" data-mr="प्रमाणित आणि अनुभवी प्रशिक्षक">Certified & Experienced Instructors</li>
+            <li data-en="Hands-on Project-Based Learning" data-mr="प्रत्यक्ष प्रकल्प-आधारित शिक्षण">Hands-on Project-Based Learning</li>
+            <li data-en="Dedicated Placement Support" data-mr="समर्पित प्लेसमेंट समर्थन">Dedicated Placement Support</li>
+            <li data-en="Modern Labs & Collaborative Environment" data-mr="आधुनिक लॅब आणि सहयोगी वातावरण">Modern Labs & Collaborative Environment</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section courses-section" id="courses">
+    <h2 data-en="Our Career-Focused Courses" data-mr="आमचे करिअर-केंद्रित कोर्सेस">Our Career-Focused Courses</h2>
+    <div class="courses-grid">
+        
+        <div class="course-card">
+            <div class="course-card-top">
+                <img src="https://images.unsplash.com/photo-1547658717-d64c1e4c7604?q=80&w=400&auto=format&fit=crop" alt="Web Design Image">
+            </div>
+            <div class="course-card-body">
+                <h3 data-en="Website Design" data-mr="वेबसाइट डिझाइन">Website Design</h3>
+                <p class="prospects"><i class="fas fa-briefcase"></i> Web Developer, UI Designer</p>
+            </div>
+            <div class="course-card-footer">
+                <span class="duration" data-en="3 Months" data-mr="३ महिने">3 Months</span>
+                <button class="btn-details" onclick="openModal('Website Design')" data-en="View Details" data-mr="तपशील पहा">View Details</button>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-card-top">
+                <img src="https://images.unsplash.com/photo-1542831371-d36c05a1e220?q=80&w=400&auto=format&fit=crop" alt="Software Dev Image">
+            </div>
+            <div class="course-card-body">
+                <h3 data-en="Software Development" data-mr="सॉफ्टवेअर डेव्हलपमेंट">Software Development</h3>
+                <p class="prospects"><i class="fas fa-briefcase"></i> Programmer, Jr. Software Engineer</p>
+            </div>
+            <div class="course-card-footer">
+                <span class="duration" data-en="4 Months" data-mr="४ महिने">4 Months</span>
+                <button class="btn-details" onclick="openModal('Software Development')" data-en="View Details" data-mr="तपशील पहा">View Details</button>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-card-top">
+                <img src="https://images.unsplash.com/photo-1576153192396-180ecef2a715?q=80&w=400&auto=format&fit=crop" alt="Graphic Design Image">
+            </div>
+            <div class="course-card-body">
+                <h3 data-en="Graphic Design" data-mr="ग्राफिक डिझाईन">Graphic Design</h3>
+                <p class="prospects"><i class="fas fa-briefcase"></i> Graphic Designer, Social Media Visual Creator</p>
+            </div>
+            <div class="course-card-footer">
+                <span class="duration" data-en="3 Months" data-mr="३ महिने">3 Months</span>
+                <button class="btn-details" onclick="openModal('Creative Designer / Graphic Design')" data-en="View Details" data-mr="तपशील पहा">View Details</button>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-card-top">
+                <img src="https://images.unsplash.com/photo-1628151016773-6114674069f7?q=80&w=400&auto=format&fit=crop" alt="Tally GST Image">
+            </div>
+            <div class="course-card-body">
+                <h3 data-en="Tally + GST" data-mr="टॅली + जीएसटी">Tally + GST</h3>
+                <p class="prospects"><i class="fas fa-briefcase"></i> Accountant, Tax Assistant</p>
+            </div>
+            <div class="course-card-footer">
+                <span class="duration" data-en="2 Months" data-mr="२ महिने">2 Months</span>
+                <button class="btn-details" onclick="openModal('Tally + GST')" data-en="View Details" data-mr="तपशील पहा">View Details</button>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-card-top">
+                <img src="https://images.unsplash.com/photo-1536733232145-c405a2e9894e?q=80&w=400&auto=format&fit=crop" alt="2D Animation Image">
+            </div>
+            <div class="course-card-body">
+                <h3 data-en="2D Animation" data-mr="2D ॲनिमेशन">2D Animation</h3>
+                <p class="prospects"><i class="fas fa-briefcase"></i> 2D Animator, Motion Graphic Artist</p>
+            </div>
+            <div class="course-card-footer">
+                <span class="duration" data-en="3 Months" data-mr="३ महिने">3 Months</span>
+                <button class="btn-details" onclick="openModal('2D Animation')" data-en="View Details" data-mr="तपशील पहा">View Details</button>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-card-top">
+                <img src="https://images.unsplash.com/photo-1558227691-8d2667d4f6d4?q=80&w=400&auto=format&fit=crop" alt="CCC Image">
+            </div>
+            <div class="course-card-body">
+                <h3 data-en="CCC" data-mr="सीसीसी">CCC</h3>
+                <p class="prospects"><i class="fas fa-briefcase"></i> Govt. Office Assistant, Data Entry Operator</p>
+            </div>
+            <div class="course-card-footer">
+                <span class="duration" data-en="1 Month" data-mr="१ महिना">1 Month</span>
+                <button class="btn-details" onclick="openModal('CCC')" data-en="View Details" data-mr="तपशील पहा">View Details</button>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div style="text-align: center; margin-top: 50px;">
+        <a href="#admission" class="btn-highlight" style="padding: 15px 30px; font-size: 20px;" data-en="View All 7 Courses & Get Free Counseling" data-mr="सर्व ७ कोर्सेस पहा आणि मोफत समुपदेशन मिळवा">View All 7 Courses & Get Free Counseling</a>
+    </div>
+
+</section>
+
+<section class="testimonials-section" id="testimonials">
+    <h2 data-en="What Our Students Say" data-mr="आमचे विद्यार्थी काय म्हणतात">What Our Students <span>Say</span></h2>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <i class="fas fa-quote-left"></i>
+            <p data-en="I got placed within 2 weeks of completing the Software Development course. The project-based learning prepared me perfectly for the industry." data-mr="सॉफ्टवेअर डेव्हलपमेंट कोर्स पूर्ण केल्यानंतर २ आठवड्यांच्या आत माझी प्लेसमेंट झाली. प्रकल्प-आधारित शिक्षणामुळे मी उद्योगासाठी पूर्णपणे तयार झालो.">I got placed within 2 weeks of completing the Software Development course. The project-based learning prepared me perfectly for the industry.</p>
+            <div class="testimonial-author" data-en="Akshay Kulkarni" data-mr="अक्षय कुलकर्णी">Akshay Kulkarni <span>(Software Developer)</span></div>
+        </div>
+        <div class="testimonial-card">
+            <i class="fas fa-quote-left"></i>
+            <p data-en="The Tally + GST training was practical and precise. Now I manage the accounts for a small firm with full confidence. Highly recommend!" data-mr="टॅली + जीएसटी प्रशिक्षण व्यावहारिक आणि अचूक होते. आता मी आत्मविश्वासाने एका लहान फर्मचे खाते व्यवस्थापित करतो. खूप शिफारस करतो!">The Tally + GST training was practical and precise. Now I manage the accounts for a small firm with full confidence. Highly recommend!</p>
+            <div class="testimonial-author" data-en="Priya Shinde" data-mr="प्रिया शिंदे">Priya Shinde <span>(Accountant)</span></div>
+        </div>
+        <div class="testimonial-card">
+            <i class="fas fa-quote-left"></i>
+            <p data-en="The Graphic Design course opened up a creative new career path for me. The trainers are excellent and always provide personal guidance." data-mr="ग्राफिक डिझाईन कोर्सने माझ्यासाठी सर्जनशील नवीन करिअरचा मार्ग उघडला. प्रशिक्षक उत्कृष्ट आहेत आणि नेहमी वैयक्तिक मार्गदर्शन देतात.">The Graphic Design course opened up a creative new career path for me. The trainers are excellent and always provide personal guidance.</p>
+            <div class="testimonial-author" data-en="Rohit Patil" data-mr="रोहित पाटील">Rohit Patil <span>(Visual Creator)</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="section admission-contact-section">
+    <div class="form-map-section">
+        <div class="admission-form-container" id="admission">
+            <h2 data-en="Ready to Start? Get Admission" data-mr="सुरुवात करण्यास तयार आहात? प्रवेश घ्या">Ready to Start? Get Admission</h2>
+            <form action="https://formsubmit.co/innoviosiontechcomputers@gmail.com" method="POST">
+                <div class="form-group">
+                    <label for="fullName" data-en="Full Name:" data-mr="पूर्ण नाव:">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Full Name" data-en="Full Name" data-mr="पूर्ण नाव" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone" data-en="Mobile Number:" data-mr="मोबाईल नंबर:">Mobile Number:</label>
+                    <input type="text" id="phone" name="phone" placeholder="Mobile Number" data-en="Mobile Number" data-mr="मोबाईल नंबर" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-en="Email Address (Optional):" data-mr="ईमेल ॲड्रेस (पर्यायी):">Email Address (Optional):</label>
+                    <input type="email" id="email" name="email" placeholder="Email Address (Optional)" data-en="Email Address (Optional)" data-mr="ईमेल ॲड्रेस (पर्यायी)">
+                </div>
+                <div class="form-group">
+                    <label for="course-select" data-en="Select Course:" data-mr="कोर्स निवडा:">Select Course:</label>
+                    <select name="course" id="course-select" required>
+                        <option value="" disabled selected data-en="Select Course" data-mr="कोर्स निवडा">Select Course</option>
+                        <option value="Website Design" data-en="Website Design" data-mr="वेबसाइट डिझाइन">Website Design</option>
+                        <option value="Software Development" data-en="Software Development" data-mr="सॉफ्टवेअर डेव्हलपमेंट">Software Development</option>
+                        <option value="Creative Designer / Graphic Design" data-en="Graphic Design" data-mr="ग्राफिक डिझाईन">Graphic Design</option>
+                        <option value="Tally + GST" data-en="Tally + GST" data-mr="टॅली + जीएसटी">Tally + GST</option>
+                        <option value="2D Animation" data-en="2D Animation" data-mr="2D ॲनिमेशन">2D Animation</option>
+                        <option value="CCC" data-en="CCC" data-mr="सीसीसी">CCC (Course on Computer Concepts)</option>
+                        <option value="Coding Languages Bootcamp" data-en="Coding Languages Bootcamp" data-mr="कोडिंग भाषा बूटकॅम्प">Coding Languages Bootcamp</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-en="Your Learning Goals:" data-mr="तुमचे शिकण्याचे ध्येय:">Your Learning Goals:</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Tell us about your learning goals!" data-en="Tell us about your learning goals!" data-mr="तुमच्या शिकण्याच्या ध्येयांबद्दल सांगा!"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit" data-en="Submit & Lock Your Seat" data-mr="सबमिट करा व तुमची जागा निश्चित करा">Submit & Lock Your Seat</button>
+            </form>
+        </div>
+
+        <div class="map-container" id="contact">
+            <h2 data-en="Our Location" data-mr="आमचे स्थान">Our Location</h2>
+            <p style="font-size: 15px; color: var(--text-medium); margin-bottom: 15px;">Near shriptarao dada bank, kuditre factory side, Koparde, Kolhapur</p>
+            
+            <iframe src="http://googleusercontent.com/maps.google.com/8" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p data-en="© 2025 InnovisionTech Computers. All Rights Reserved." data-mr="© 2025 इनोव्हिजनटेक कॉम्प्युटर्स. सर्व हक्क राखीव.">© 2025 InnovisionTech Computers. All Rights Reserved.</p>
+</footer>
+
+<a href="https://wa.me/9356674344" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<div id="courseModal" style="display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center;">
+    <div class="modal-content" style="background-color: var(--card-bg); margin: auto; padding: 30px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 90%; max-width: 500px; position: relative; text-align: left;">
+        <h3 id="modalCourseName" style="color: var(--primary-blue); margin-bottom: 10px; font-size: 24px;">Course Name</h3>
+        
+        <p style="margin-bottom: 5px;"><b data-en="Fees:" data-mr="फी:">Fees:</b> <span id="modalFees"></span></p>
+        <p style="margin-bottom: 5px;"><b data-en="Duration:" data-mr="कालावधी:">Duration:</b> <span id="modalDuration"></span></p>
+        <p style="margin-bottom: 5px;"><b data-en="Learning Hours:" data-mr="अभ्यास तास:">Learning Hours:</b> <span id="modalHours"></span></p>
+        
+        <h4 id="modalObjectiveHeader" style="margin-top: 15px; color: var(--text-dark); font-size: 18px; border-bottom: 2px solid var(--accent-green); padding-bottom: 5px; margin-bottom: 10px;">Course Objective</h4>
+        <p id="modalObjective" style="font-size: 15px; color: var(--text-medium);"></p>
+
+        <h4 id="modalLearningHeader" style="margin-top: 15px; color: var(--text-dark); font-size: 18px; border-bottom: 2px solid var(--accent-green); padding-bottom: 5px; margin-bottom: 10px;">What You Will Learn</h4>
+        <ul id="modalLearningList" style="font-size: 15px; color: var(--text-medium); padding-left: 20px;">
+            </ul>
+
+        <div class="modal-footer-btns" style="margin-top: 25px; display: flex; gap: 15px; justify-content: flex-end;">
+            <a href="tel:9356674344" class="btn-call" style="background-color: var(--accent-green); color: white; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.3s;" data-en="Call Us Now" data-mr="आत्ताच कॉल करा">Call Us Now</a>
+            <button class="close-button" onclick="closeModal()" style="background-color: #dc3545; color: white; padding: 10px 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background 0.3s;" data-en="Close" data-mr="बंद करा">Close</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
